@@ -52,7 +52,7 @@
       @click="createColumn"
       class="bg-gray-200 whitespace-nowrap p-2 rounded opacity-50"
     >
-      + Add Another Column
+      +Add Another Column
     </button>
   </div>
 </template>
