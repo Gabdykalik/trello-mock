@@ -1,9 +1,9 @@
-name: Deploy Nuxt to GitHub Pages
+name: Deploy Nuxt 3 to GitHub Pages
 
 on:
   push:
     branches:
-      - main # Run this action when pushing to main
+      - main
 
 jobs:
   deploy:
@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false # Use new credentials for push
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -26,12 +24,9 @@ jobs:
       - name: Generate static files
         run: npm run generate
 
-      - name: Clean up the working directory
-        run: git rm -r --cached . || true && git clean -fdx || true
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          force_orphan: true # Ensure there are no commit history issues
+          force_orphan: true # Ensure no history issues
