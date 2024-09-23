@@ -4,11 +4,4 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt"],
   ssr: false,
   compatibilityDate: "2024-08-26",
-  target: "static",
-  app: {
-    baseURL: "https://github.com/Gabdykalik/trello-mock",
-  },
-  generate: {
-    fallback: true,
-  },
 });
