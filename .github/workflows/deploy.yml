@@ -3,7 +3,7 @@ name: Deploy Nuxt 3 to GitHub Pages
 on:
   push:
     branches:
-      - main # Triggers on push to the `main` branch
+      - main  # Triggers on push to the `main` branch
 
 jobs:
   deploy:
@@ -16,13 +16,19 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" # Ensure you're using a supported Node version
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
       - name: Build project
         run: npm run generate
+
+      - name: Ensure clean Git state
+        run: |
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
