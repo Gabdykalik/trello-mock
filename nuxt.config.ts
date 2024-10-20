@@ -7,4 +7,7 @@ export default defineNuxtConfig({
     baseURL: process.env.NODE_ENV === "production" ? "/trello-mock/" : "/",
   },
   ssr: false, // Disable SSR for GitHub Pages
+  build: {
+    transpile: ["vuedraggable"], // Ensure vuedraggable works properly in build
+  },
 });
